@@ -40,6 +40,12 @@ This guide will walk you through the steps to set up and run a Fabric applicatio
     cd chaincode
     ```
 
+    Install the necessary Node modules:
+
+    ```sh
+    npm install
+    ```
+
     Run the following commands to set environment variables:
 
     ```sh
@@ -79,7 +85,7 @@ This guide will walk you through the steps to set up and run a Fabric applicatio
     Navigate to the application folder:
 
     ```sh
-    cd application
+    cd ../application
     ```
 
 11. **Install Node Modules**
