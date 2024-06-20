@@ -7,7 +7,7 @@
         "npm": ">=6"
     },
     "scripts": {
-        "dev": "node server.js",
+        "dev": "nodemon server.js",
         "lint": "eslint *.js",
         "pretest": "npm run lint"
     },
@@ -24,7 +24,8 @@
         "helia": "^4.2.4",
         "ipfs-http-client": "^60.0.1",
         "kubo-rpc-client": "^4.1.1",
-        "multiformats": "^13.1.1"
+        "multiformats": "^13.1.1",
+        "nodemon": "^3.1.4"
     },
     "devDependencies": {
         "eslint": "^7.32.0"
