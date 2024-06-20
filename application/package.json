@@ -23,7 +23,8 @@
         "fabric-network": "^2.2.19",
         "helia": "^4.2.4",
         "ipfs-http-client": "^60.0.1",
-        "kubo-rpc-client": "^4.1.1"
+        "kubo-rpc-client": "^4.1.1",
+        "multiformats": "^13.1.1"
     },
     "devDependencies": {
         "eslint": "^7.32.0"
