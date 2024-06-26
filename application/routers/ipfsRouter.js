@@ -1,8 +1,9 @@
 import express from "express";
-import updateIPFS from "../controllers/ipfsControllers/updateController.js";
+import { getIPFSEntry, updateIPFSEntry } from "../controllers/index.js";
 
 const ipfsRouter = express.Router();
 
-ipfsRouter.post("/update", updateIPFS);
+ipfsRouter.post("/get", getIPFSEntry);
+ipfsRouter.post("/update", updateIPFSEntry);
 
 export default ipfsRouter;

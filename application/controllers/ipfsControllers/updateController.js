@@ -1,10 +1,11 @@
-import { getBlock,getChaincode,getIpfsInstance } from "../../services/index.js";
+import { getBlock, getChaincode, getIpfsInstance } from "../../services/index.js";
 import { dagJson } from "@helia/dag-json";
 import { CID } from "multiformats/cid";
+
 const helia = await getIpfsInstance();
 const dag = dagJson(helia);
 
-const updateIPFS = async (req, res) => {
+const updateIPFSEntry = async (req, res) => {
   const { abcID, permissions, credits, last_added, marks, certificates } = req.body;
   const contract = await getChaincode("basic");
 
@@ -34,4 +35,4 @@ const updateIPFS = async (req, res) => {
   }
 };
 
-export default updateIPFS;
+export default updateIPFSEntry;

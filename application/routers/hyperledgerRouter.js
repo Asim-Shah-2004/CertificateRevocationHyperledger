@@ -1,8 +1,8 @@
 import express from "express";
-import createEntry from "../controllers/hyperledgerControllers/createController.js";
+import { createIPFSEntry } from "../controllers/index.js";
 
 const hyperledgerRouter = express.Router();
 
-hyperledgerRouter.post("/create", createEntry);
+hyperledgerRouter.post("/create", createIPFSEntry);
 
 export default hyperledgerRouter;

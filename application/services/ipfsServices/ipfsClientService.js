@@ -1,5 +1,7 @@
 import { createHelia } from "helia";
+
 let ipfsInstance = null;
+
 const createIpfsInstance = async () => {
   if (!ipfsInstance) {
     ipfsInstance = await createHelia();

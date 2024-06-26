@@ -1,9 +1,10 @@
 import { dagJson } from "@helia/dag-json";
-import { getChaincode,getIpfsInstance } from "../../services/index.js";
+import { getChaincode, getIpfsInstance } from "../../services/index.js";
+
 const helia = await getIpfsInstance();
 const dag = dagJson(helia);
 
-const createEntry = async (req, res) => {
+const createIPFSEntry = async (req, res) => {
   try {
     const { abcID, name, DOB, college_name } = req.body;
     const contract = await getChaincode("basic");
@@ -28,4 +29,4 @@ const createEntry = async (req, res) => {
   }
 };
 
-export default createEntry;
+export default createIPFSEntry;
