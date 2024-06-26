@@ -6,14 +6,15 @@ const dag = dagJson(helia);
 
 const createIPFSEntry = async (req, res) => {
   try {
-    const { abcID, name, DOB, college_name } = req.body;
+    const { abcID, name, dob, college_name ,course } = req.body;
     const contract = await getChaincode("basic");
 
     const jsonData = {
       abcID,
       name,
-      DOB,
+      dob,
       college_name,
+      course
     };
 
     let cid = await dag.add(jsonData);
