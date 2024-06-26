@@ -19,7 +19,9 @@ class AssetTransfer extends Contract {
   }
 
   async updateBlock(ctx, abcID, hash) {
-    const block = JSON.parse(await getBlock(ctx, abcID));
+    const blockJSON = await ctx.stub.getState(abcID);
+    if (!blockJSON || blockJSON.length === 0) return `The block ${abcID} does not exist`;
+    const block = JSON.parse(blockJSON.toString());
     block.hash = hash;
 
     await ctx.stub.putState(abcID, Buffer.from(JSON.stringify(block)));
