@@ -7,14 +7,15 @@ const test = async (req, res) => {
 
   try {
     // Create a new entry
-    let result = await contract.submitTransaction("addBlock", "xmkmxalm","xamxoamo");
-    console.log("added block:", result.toString());
-
+    let result = await contract.submitTransaction("addBlock", "2022600049","xamxoamo");
+    console.log("Added block:", result.toString());
+    console.log(result);
+    
+    // Find the created entry
+    result = await contract.evaluateTransaction("getBlock", "2022600049");
+    console.log("Find Entry Result:", result.toString());
     console.log(result);
 
-    // Find the created entry
-    result = await contract.evaluateTransaction("getBlock", "xmkmxalm");
-    console.log("Find Entry Result:", result.toString());
     return res.sendStatus(200)
   } catch (err) {
     console.log(err);
