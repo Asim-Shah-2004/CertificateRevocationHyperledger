@@ -1,0 +1,64 @@
+{
+    "name": "John Doe",
+    "dob": "1995-05-15",
+    "college_name": "XYZ University",
+    "course": "Computer Science",
+    "credits": 120,
+    "last_updated": "2024-06-27",
+    "is_revoked": false,
+    "revoked_reason": "",
+    "marks": [
+      {
+        "sem_no": 1,
+        "subjects": [
+          {
+            "name": "Mathematics",
+            "final_marks": 85,
+            "credits": 4
+          },
+          {
+            "name": "Physics",
+            "final_marks": 78,
+            "credits": 4
+          }
+        ]
+      },
+      {
+        "sem_no": 2,
+        "subjects": [
+          {
+            "name": "Chemistry",
+            "final_marks": 82,
+            "credits": 4
+          },
+          {
+            "name": "Computer Programming",
+            "final_marks": 90,
+            "credits": 4
+          }
+        ]
+      }
+    ],
+    "certificates": [
+      {
+        "name": "Programming Basics",
+        "data": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAHUlEQVQ4jWNgGAWjYBSMglEwCkRKAwAVbg3qvP5HYAAAAASUVORK5CYII="
+      },
+      {
+        "name": "Data Structures",
+        "data": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAHUlEQVQ4jWNgGAWjYBSMglEwCkRKAwAVbg3qvP5HYAAAAASUVORK5CYII="
+      }
+    ],
+    "permission": [
+      {
+        "type": "read",
+        "entity": "library",
+        "scope": "full"
+      },
+      {
+        "type": "write",
+        "entity": "gym",
+        "scope": "limited"
+      }
+    ]
+  }

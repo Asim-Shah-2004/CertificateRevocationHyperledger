@@ -34,9 +34,8 @@ const updateMarks = (data, marks) => {
 };
 
 const updateIPFSEntry = async (req, res) => {
-  const { abcID, name, dob, college_name, course, marks, certificates } = req.body;
+  const { abcID, name, dob, college_name, course, marks, certificates ,is_completed } = req.body;
   const contract = await getChaincode("basic");
-
   try {
     const blockHash = await getBlock(abcID);
     if (blockHash == null) return res.status(404).send({ message: "Entry does not exist" });
@@ -50,11 +49,12 @@ const updateIPFSEntry = async (req, res) => {
       return res.status(400).json({ message: "Certificate is revoked", reason: data.revoked_reason });
     }
 
-    
+
     if (name !== undefined && name !== null) data.name = name;
     if (dob !== undefined && dob !== null) data.dob = dob;
     if (college_name !== undefined && college_name !== null) data.college_name = college_name;
     if (course !== undefined && course !== null) data.course = course;
+    if(is_completed=="true" || is_completed===true) data.is_completed = true    
 
     
     if (marks !== undefined && marks !== null) {

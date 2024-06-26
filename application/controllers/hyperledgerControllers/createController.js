@@ -14,7 +14,11 @@ const createIPFSEntry = async (req, res) => {
       name,
       dob,
       college_name,
-      course
+      course,
+      is_completed:false,
+      is_revoked:false,
+      revoked_reason:"",
+      last_updated:new Date().toISOString()
     };
 
     let cid = await dag.add(jsonData);
