@@ -3,6 +3,7 @@ import CertificateRouter from "./routers/certificateRouter.js";
 import connectToHyperledger from "./services/hyperledgerServices/hyperledgerNetworkService.js";
 import testRouter from "./routers/testRouter.js";
 import IPFSrouter from "./routers/ipfsRouter.js";
+import HyperledgerRouter from "./routers/hyperledgerRouter.js";
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -13,7 +14,7 @@ app.use(express.json());
 
 app.use("/IPFS",IPFSrouter)
 app.use("/test", testRouter);
-
+app.use("/hyperledger",HyperledgerRouter)
 app.get("/", (req, res) => {
   res.send("Hello from IPFS and Hyperledger!");
 });

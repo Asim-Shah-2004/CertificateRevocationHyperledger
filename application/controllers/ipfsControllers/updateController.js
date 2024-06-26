@@ -13,6 +13,8 @@ const updateIPFS = async(req,res)=>{
             if(blockHash==null) return res.send({"message" : "entry does not exists"})
             const cid = CID.parse(blockHash);
             const data = await dag.get(cid)
+            console.log(data);
+            
             return res.send({"data":data})
         }catch(err){
             console.log(err);

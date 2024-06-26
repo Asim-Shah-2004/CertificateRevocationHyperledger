@@ -1,4 +1,6 @@
 import express from "express";
-import updateIPFS from "../controllers/ipfsControllers/updateController";
-const router = express.Router()
-router.post('/update')
+import createEntry from "../controllers/hyperledgerControllers/createController.js";
+const HyperledgerRouter = express.Router()
+HyperledgerRouter.post('/create',createEntry)
+export default HyperledgerRouter
+
