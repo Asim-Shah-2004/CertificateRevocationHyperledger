@@ -49,7 +49,7 @@ class AssetTransfer extends Contract {
         const entry = JSON.parse(entryJSON.toString());
         entry.certificateHash = certificateHash;
         entry.validity = true;
-        // entry.expirationTime = Date.now() + validityPeriod * 60000;
+        entry.expirationTime = Date.now() + validityPeriod * 60000;
 
         await ctx.stub.putState(id, Buffer.from(stringify(sortKeysRecursive(entry))));
         return JSON.stringify(entry);
@@ -58,6 +58,25 @@ class AssetTransfer extends Contract {
     async entryExists(ctx, id) {
         const entryJSON = await ctx.stub.getState(id);
         return entryJSON && entryJSON.length > 0;
+    }
+
+    async addBlock(ctx, abcid, hash) {
+        const block = {
+            abcid,
+            hash,
+        };
+
+        await ctx.stub.putState(abcid, Buffer.from(stringify(sortKeysRecursive(block))));
+        return JSON.stringify(block);
+    }
+
+    async getBlock(ctx, abcid) {
+        const blockJSON = await ctx.stub.getState(abcid);
+        if (!blockJSON || blockJSON.length === 0) {
+            return `The block ${abcid} does not exist`;
+        }
+
+        return blockJSON.toString();
     }
 }
 
