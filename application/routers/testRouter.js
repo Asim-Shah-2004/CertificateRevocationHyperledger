@@ -1,9 +1,8 @@
 import express from "express";
 import { test } from "../controllers/ipfsTest.js";
 
-const router = express.Router();
+const testRouter = express.Router();
 
-// Define the test route
-router.get("/", test);
+testRouter.get("/", test);
 
-export default router;
+export default testRouter;

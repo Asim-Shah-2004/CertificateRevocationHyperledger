@@ -11,9 +11,9 @@ connectToHyperledger();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use("/IPFS",IPFSrouter)
+app.use("/ipfs", IPFSrouter);
 app.use("/test", testRouter);
-app.use("/hyperledger",HyperledgerRouter)
+app.use("/hyperledger", HyperledgerRouter);
 app.get("/", (req, res) => {
   res.send("Hello from IPFS and Hyperledger!");
 });
