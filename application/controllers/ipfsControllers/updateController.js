@@ -28,7 +28,7 @@ const updateIPFSEntry = async (req, res) => {
     const updatedCID = await dag.add(data);
     const resposne = await contract.submitTransaction("updateBlock", abcID, updatedCID);
     console.log(resposne.toString());
-    res.status(200).json({ message: "Updated Successfully", cid: cid });
+    res.status(200).json({ message: "Updated Successfully", cid: updatedCID });
   } catch (err) {
     console.log("Error updating data on IPFS:", err);
     res.status(500).json({ message: "Failed to update data on IPFS", error: err.message });
