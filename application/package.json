@@ -2,6 +2,7 @@
     "name": "asset-transfer-basic",
     "version": "1.0.0",
     "description": "Asset-transfer-basic application implemented in JavaScript",
+    "type": "module",
     "engines": {
         "node": ">=14.14",
         "npm": ">=6"
@@ -17,10 +18,9 @@
     "dependencies": {
         "@helia/dag-json": "^3.0.4",
         "@helia/json": "^3.0.4",
-        "body-parser": "^1.20.2",
         "express": "^4.19.2",
-        "fabric-ca-client": "^2.2.19",
-        "fabric-network": "^2.2.19",
+        "fabric-ca-client": "^2.2.20",
+        "fabric-network": "^2.2.20",
         "helia": "^4.2.4",
         "ipfs-http-client": "^60.0.1",
         "kubo-rpc-client": "^4.1.1",
@@ -28,6 +28,6 @@
         "nodemon": "^3.1.4"
     },
     "devDependencies": {
-        "eslint": "^7.32.0"
+        "eslint": "^9.5.0"
     }
 }

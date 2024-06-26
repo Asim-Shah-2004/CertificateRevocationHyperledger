@@ -1,33 +1,41 @@
+import { getChaincode } from "../services/chaincodeService.js";
 
-const getChaincode = require('../services/chainocdeService.js')
-
+// Test function to interact with the chaincode
 const test = async (req, res) => {
-    const contract = await getChaincode('basic')      
-    console.log(contract);
-    try{
+  const contract = await getChaincode("basic");
+  console.log(contract);
 
-    let result = await contract.submitTransaction('createEntry', '2022600055', 'Asim Shah', 'MyCollege');
-            console.log('Create Entry Result:', result.toString());
+  try {
+    // Create a new entry
+    let result = await contract.submitTransaction("createEntry", "2022600055", "Asim Shah", "MyCollege");
+    console.log("Create Entry Result:", result.toString());
 
-            
-            result = await contract.evaluateTransaction('findEntry', '2022600055');
-            console.log('Find Entry Result:', result.toString());
+    console.log(result);
 
-            
-            result = await contract.submitTransaction('issueCertificate', '2022600055', 'certificateHash123', '1');
-            console.log('Issue Certificate Result:', result.toString());
+    // Find the created entry
+    result = await contract.evaluateTransaction("findEntry", "2022600055");
+    console.log("Find Entry Result:", result.toString());
 
-            
-            console.log('Waiting for 70 seconds to allow certificate validity to expire...');
-            await new Promise(resolve => setTimeout(resolve, 70000));
+    console.log(result);
 
-            
-            result = await contract.evaluateTransaction('findEntry', '2022600055');
-            console.log('Find Entry Result after expiry:', result.toString());
-    }catch(error){
-        console.log(error);
-    }
-           
-}
+    // Issue a certificate for the entry
+    result = await contract.submitTransaction("issueCertificate", "2022600055", "certificateHash123", "1");
+    console.log("Issue Certificate Result:", result.toString());
 
-module.exports = { test };
+    console.log(result);
+
+    // Wait for 70 seconds to allow certificate validity to expire
+    console.log("Waiting for 70 seconds to allow certificate validity to expire...");
+    await new Promise((resolve) => setTimeout(resolve, 70000));
+
+    // Find the entry again after the certificate has expired
+    result = await contract.evaluateTransaction("findEntry", "2022600055");
+    console.log("Find Entry Result after expiry:", result.toString());
+
+    console.log(result);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export { test };

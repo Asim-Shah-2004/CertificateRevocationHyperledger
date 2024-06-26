@@ -1,8 +1,9 @@
-const express = require('express');
-const { test } = require('../controllers/ipfsTest.js');
+import express from "express";
+import { test } from "../controllers/ipfsTest.js";
 
-const testRouter = express.Router();  
+const router = express.Router();
 
-testRouter.post('/', test);
+// Define the test route
+router.get("/", test);
 
-module.exports = testRouter;  
+export default router;

@@ -49,7 +49,7 @@ class AssetTransfer extends Contract {
         const entry = JSON.parse(entryJSON.toString());
         entry.certificateHash = certificateHash;
         entry.validity = true;
-        entry.expirationTime = Date.now() + validityPeriod * 60000;
+        // entry.expirationTime = Date.now() + validityPeriod * 60000;
 
         await ctx.stub.putState(id, Buffer.from(stringify(sortKeysRecursive(entry))));
         return JSON.stringify(entry);
