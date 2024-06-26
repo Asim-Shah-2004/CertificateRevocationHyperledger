@@ -1,4 +1,4 @@
-import { getIpfsInstance } from "../services/ipfsClientService.js";
+import { getIpfsInstance } from "../services/ipfsServices/ipfsClientService.js";
 import { dagJson } from "@helia/dag-json";
 import { CID } from "multiformats/cid";
 

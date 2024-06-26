@@ -1,6 +1,6 @@
 import express from "express";
-import CertificateRouter from "./routers/CertificateRouter.js";
-import connectToHyperledger from "./services/hyperledgerNetworkService.js";
+import CertificateRouter from "./routers/certificateRouter.js";
+import connectToHyperledger from "./services/hyperledgerServices/hyperledgerNetworkService.js";
 import testRouter from "./routers/testRouter.js";
 
 const app = express();

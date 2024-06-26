@@ -1,5 +1,5 @@
 import express from "express";
-import { HandleAddCertificate, HandleGetCertificate } from "../controllers/HandleCertificate.js";
+import { HandleAddCertificate, HandleGetCertificate } from "../controllers/handleCertificate.js";
 
 const router = express.Router();
 

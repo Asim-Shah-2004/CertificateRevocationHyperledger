@@ -1,4 +1,4 @@
-import { getChaincode } from "../services/chaincodeService.js";
+import { getChaincode } from "../services/hyperledgerServices/chaincodeService.js";
 
 // Test function to interact with the chaincode
 const test = async (req, res) => {

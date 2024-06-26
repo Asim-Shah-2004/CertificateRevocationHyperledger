@@ -4,8 +4,8 @@ import { Gateway, Wallets } from "fabric-network";
 import FabricCAServices from "fabric-ca-client";
 import path from "path";
 
-import { buildCAClient, registerAndEnrollUser, enrollAdmin } from "../../../test-application/javascript/CAUtil.js";
-import { buildCCPOrg1, buildWallet } from "../../../test-application/javascript/AppUtil.js";
+import { buildCAClient, registerAndEnrollUser, enrollAdmin } from "../../utils/CAUtil.js";
+import { buildCCPOrg1, buildWallet } from "../../utils/AppUtil.js";
 
 const channelName = process.env.CHANNEL_NAME || "mychannel";
 const chaincodeName = process.env.CHAINCODE_NAME || "basic";
