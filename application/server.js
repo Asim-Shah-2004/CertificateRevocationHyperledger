@@ -1,6 +1,6 @@
 import express from "express";
 import { connectToHyperledger } from "./services/index.js";
-import { hyperledgerRouter, ipfsRouter, testRouter } from "./routers/index.js";
+import { hyperledgerRouter, ipfsRouter, publicRouter, testRouter } from "./routers/index.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -11,8 +11,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use("/ipfs", ipfsRouter);
-app.use("/test", testRouter);
 app.use("/hyperledger", hyperledgerRouter);
+app.use("/public", publicRouter);
+app.use("/test", testRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello from IPFS and Hyperledger!");
