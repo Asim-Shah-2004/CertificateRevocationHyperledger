@@ -2,7 +2,7 @@ import express from "express";
 import CertificateRouter from "./routers/certificateRouter.js";
 import connectToHyperledger from "./services/hyperledgerServices/hyperledgerNetworkService.js";
 import testRouter from "./routers/testRouter.js";
-
+import IPFSrouter from "./routers/ipfsRouter.js";
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -11,7 +11,7 @@ connectToHyperledger();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use("/ipfs", CertificateRouter);
+app.use("/IPFS",IPFSrouter)
 app.use("/test", testRouter);
 
 app.get("/", (req, res) => {

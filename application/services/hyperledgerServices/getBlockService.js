@@ -1,8 +1,15 @@
-import { getChaincode } from "./chaincodeService";
+import { getChaincode } from "./chaincodeService.js";
 
-const getBlock = async()=>{
+const getBlock = async (ABCID) => {
     const contract = await getChaincode("basic");
-    
+    try {
+        const block = await contract.evaluateTransaction("getBlock", ABCID);
+        const blockData = JSON.parse(block.toString());
+        return blockData.hash ? blockData.hash : null;
+    } catch (err) {
+        console.log(err);
+        return null;
+    }
 }
 
-export default getBlock
+export default getBlock;

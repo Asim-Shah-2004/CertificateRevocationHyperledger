@@ -15,7 +15,7 @@ const test = async (req, res) => {
     // Find the created entry
     result = await contract.evaluateTransaction("getBlock", "xmkmxalm");
     console.log("Find Entry Result:", result.toString());
-
+    return res.sendStatus(200)
   } catch (err) {
     console.log(err);
   }
