@@ -1,4 +1,4 @@
-import { getChaincode } from "./chaincodeService.js";
+import {getChaincode} from "../index.js"
 
 const getBlock = async (ABCID) => {
     const contract = await getChaincode("basic");

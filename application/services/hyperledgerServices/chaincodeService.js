@@ -1,4 +1,4 @@
-import connectToHyperledger from "./hyperledgerNetworkService.js";
+import {connectToHyperledger} from "../index.js"
 
 // Function to get a specific chaincode from Hyperledger network
 const getChaincode = async (name) => {
@@ -12,4 +12,4 @@ const getChaincode = async (name) => {
   }
 };
 
-export { getChaincode };
+export default getChaincode;

@@ -1,6 +1,5 @@
 import express from "express";
-import CertificateRouter from "./routers/certificateRouter.js";
-import connectToHyperledger from "./services/hyperledgerServices/hyperledgerNetworkService.js";
+import { connectToHyperledger } from "./services/index.js";
 import testRouter from "./routers/testRouter.js";
 import IPFSrouter from "./routers/ipfsRouter.js";
 import HyperledgerRouter from "./routers/hyperledgerRouter.js";

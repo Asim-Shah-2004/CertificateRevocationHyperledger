@@ -1,7 +1,5 @@
-import { getIpfsInstance } from "../../services/ipfsServices/ipfsClientService.js";
 import { dagJson } from "@helia/dag-json";
-import { CID } from "multiformats/cid";
-import { getChaincode } from "../../services/hyperledgerServices/chaincodeService.js";
+import { getChaincode,getIpfsInstance } from "../../services/index.js";
 const helia = await getIpfsInstance();
 const dag = dagJson(helia);
 
