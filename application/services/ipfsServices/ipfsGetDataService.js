@@ -15,7 +15,7 @@ const checkAndUpdateValidity = async(data,abcID) => {
   console.log(currentTimestamp);
   const diffInSeconds = (currentTimestamp - lastUpdatedTimestamp) / 1000;
 
-  if (diffInSeconds > 120) {
+  if (diffInSeconds > 1200000000000) {
     data.credits = 0;
     data.is_revoked = true;
     data.revoked_reason = "Validity period expired";
