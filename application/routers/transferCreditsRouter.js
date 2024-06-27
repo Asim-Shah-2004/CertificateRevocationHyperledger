@@ -1,8 +1,8 @@
 import express from 'express'
 import { transferCredits } from '../controllers/index.js'
 
-const transfer = express.Router();
+const transferRouter = express.Router();
 
-transfer.post("/credits", transferCredits);
+transferRouter.post("/credits", transferCredits);
 
-export default transfer;
+export default transferRouter;
