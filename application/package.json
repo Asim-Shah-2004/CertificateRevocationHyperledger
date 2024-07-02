@@ -17,13 +17,13 @@
     "license": "Apache-2.0",
     "dependencies": {
         "@helia/dag-json": "^3.0.4",
-        "@helia/json": "^3.0.4",
+        "blockstore-fs": "^1.1.10",
+        "dotenv": "^16.4.5",
         "express": "^4.19.2",
         "fabric-ca-client": "^2.2.20",
         "fabric-network": "^2.2.20",
+        "global": "^4.4.0",
         "helia": "^4.2.4",
-        "ipfs-http-client": "^60.0.1",
-        "kubo-rpc-client": "^4.1.1",
         "multiformats": "^13.1.1",
         "nodemon": "^3.1.4"
     },

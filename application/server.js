@@ -16,9 +16,6 @@ app.use("/public", publicRouter);
 app.use("/test", testRouter);
 app.use("/transfer", transferRouter);
 app.use("/certificate", certificateRouter);
-app.get("/", (req, res) => {
-  res.send("Hello from IPFS and Hyperledger!");
-});
 
 // Start the server
 app.listen(port, () => {

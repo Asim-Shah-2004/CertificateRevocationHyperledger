@@ -15,7 +15,7 @@ const org1UserId = "javascriptAppUser";
 
 let gateway = null;
 
-// Function to connect to the Hyperledger network
+
 const connectToHyperledger = async () => {
   if (gateway && gateway.getIdentity()) {
     console.log("Using existing gateway connection");

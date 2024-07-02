@@ -1,10 +1,14 @@
 import { createHelia } from "helia";
-
+import { FsBlockstore } from 'blockstore-fs'
+import 'dotenv/config'
 let ipfsInstance = null;
 
 const createIpfsInstance = async () => {
   if (!ipfsInstance) {
-    ipfsInstance = await createHelia();
+    const blockstore = new FsBlockstore(process.env.BLOCKSTORE_PATH)
+    ipfsInstance = await createHelia({blockstore});
+    console.log(ipfsInstance);
+    console.log("herr");
     console.log("IPFS instance created");
   }
   return ipfsInstance;
