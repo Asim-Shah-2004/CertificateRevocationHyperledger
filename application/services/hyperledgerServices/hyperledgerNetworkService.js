@@ -8,7 +8,6 @@ import { buildCAClient, registerAndEnrollUser, enrollAdmin } from "../../utils/C
 import { buildCCPOrg1, buildCCPOrg2, buildWallet } from "../../utils/AppUtil.js";
 
 const channelName = process.env.CHANNEL_NAME || "mychannel";
-const chaincodeName = process.env.CHAINCODE_NAME || "basic";
 const mspOrg1 = "Org1MSP";
 const mspOrg2 = "Org2MSP";
 const walletPath1 = path.join(path.resolve(), "wallet1");

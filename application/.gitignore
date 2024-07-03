@@ -10,8 +10,8 @@ node_modules/
 jspm_packages/
 package-lock.json
 
-wallet
-!wallet/.gitkeep
+wallet1/
+wallet2/
 data/
 
 #classic

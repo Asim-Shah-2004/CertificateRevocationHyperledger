@@ -1,6 +1,7 @@
 import express from "express";
 import { connectToHyperledger } from "./services/index.js";
 import { hyperledgerRouter, ipfsRouter, publicRouter, testRouter, transferRouter, certificateRouter } from "./routers/index.js";
+import checkAuthority from "./middlewares/checkAuthority.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -10,12 +11,33 @@ connectToHyperledger();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use("/ipfs", ipfsRouter);
-app.use("/hyperledger", hyperledgerRouter);
-app.use("/public", publicRouter);
-app.use("/test", testRouter);
-app.use("/transfer", transferRouter);
-app.use("/certificate", certificateRouter);
+const checkOrg1Access = (req, res, next) => {
+  const { org } = req.headers;
+  if (org === "Org1") {
+    next();
+  } else {
+    res.status(403).send({ message: "Access denied" });
+  }
+};
+
+const checkOrg2Access = (req, res, next) => {
+  const { org } = req.headers;
+  if (org === "Org2") {
+    next();
+  } else {
+    res.status(403).send({ message: "Access denied" });
+  }
+};
+
+// Routes for Org1
+app.use("/ipfs", checkOrg1Access, checkAuthority, ipfsRouter);
+app.use("/hyperledger", checkOrg1Access, checkAuthority, hyperledgerRouter);
+app.use("/public", checkOrg1Access, checkAuthority, publicRouter);
+app.use("/transfer", checkOrg1Access, checkAuthority, transferRouter);
+app.use("/certificate", checkOrg1Access, checkAuthority, certificateRouter);
+
+// Specific route for Org2
+app.use("/test", checkOrg2Access, checkAuthority, testRouter);
 
 // Start the server
 app.listen(port, () => {
