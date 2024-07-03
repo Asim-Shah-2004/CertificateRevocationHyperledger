@@ -25,7 +25,7 @@ const checkAuthority = async (req, res, next) => {
     if (response.toString() === "true") {
       next();
     } else {
-      res.status(403).send({ message: "Access denied" });
+      res.status(403).send({ message: "Invalid MSP" });
     }
   } catch (error) {
     res.status(500).send({ message: `Error: ${error.message}` });

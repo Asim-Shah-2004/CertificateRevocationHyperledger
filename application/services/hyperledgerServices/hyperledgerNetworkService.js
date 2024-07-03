@@ -3,13 +3,14 @@
 import { Gateway, Wallets } from "fabric-network";
 import FabricCAServices from "fabric-ca-client";
 import path from "path";
+import "dotenv/config"
 
 import { buildCAClient, registerAndEnrollUser, enrollAdmin } from "../../utils/CAUtil.js";
 import { buildCCPOrg1, buildCCPOrg2, buildWallet } from "../../utils/AppUtil.js";
 
 const channelName = process.env.CHANNEL_NAME || "mychannel";
-const mspOrg1 = "Org1MSP";
-const mspOrg2 = "Org2MSP";
+const mspOrg1 = process.env.mspOrg1;
+const mspOrg2 = process.env.mspOrg2;
 const walletPath1 = path.join(path.resolve(), "wallet1");
 const walletPath2 = path.join(path.resolve(), "wallet2");
 const org1UserId = "org1User";
@@ -26,7 +27,6 @@ const connectToHyperledger = async () => {
   }
 
   try {
-    // Connect Org1
     const ccp1 = buildCCPOrg1();
     const caClient1 = buildCAClient(FabricCAServices, ccp1, "ca.org1.example.com");
     const wallet1 = await buildWallet(Wallets, walletPath1);
@@ -40,7 +40,6 @@ const connectToHyperledger = async () => {
       discovery: { enabled: true, asLocalhost: true },
     });
 
-    // Connect Org2
     const ccp2 = buildCCPOrg2();
     const caClient2 = buildCAClient(FabricCAServices, ccp2, "ca.org2.example.com");
     const wallet2 = await buildWallet(Wallets, walletPath2);

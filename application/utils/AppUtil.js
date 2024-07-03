@@ -1,11 +1,4 @@
-/*
- * Copyright IBM Corp. All Rights Reserved.
- *
- * SPDX-License-Identifier: Apache-2.0
- */
-
 "use strict";
-
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from 'url';
@@ -14,7 +7,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export const buildCCPOrg1 = () => {
-  // load the common connection configuration file
   const ccpPath = path.resolve(
     __dirname,
     "..",
@@ -31,8 +23,6 @@ export const buildCCPOrg1 = () => {
     throw new Error(`no such file or directory: ${ccpPath}`);
   }
   const contents = fs.readFileSync(ccpPath, "utf8");
-
-  // build a JSON object from the file contents
   const ccp = JSON.parse(contents);
 
   console.log(`Loaded the network configuration located at ${ccpPath}`);
@@ -40,7 +30,6 @@ export const buildCCPOrg1 = () => {
 };
 
 export const buildCCPOrg2 = () => {
-  // load the common connection configuration file
   const ccpPath = path.resolve(
     __dirname,
     "..",
@@ -57,8 +46,6 @@ export const buildCCPOrg2 = () => {
     throw new Error(`no such file or directory: ${ccpPath}`);
   }
   const contents = fs.readFileSync(ccpPath, "utf8");
-
-  // build a JSON object from the file contents
   const ccp = JSON.parse(contents);
 
   console.log(`Loaded the network configuration located at ${ccpPath}`);
@@ -66,7 +53,6 @@ export const buildCCPOrg2 = () => {
 };
 
 export const buildWallet = async (Wallets, walletPath) => {
-  // Create a new wallet : Note that wallet is for managing identities.
   let wallet;
   if (walletPath) {
     wallet = await Wallets.newFileSystemWallet(walletPath);

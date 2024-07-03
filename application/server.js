@@ -1,7 +1,7 @@
 import express from "express";
 import { connectToHyperledger } from "./services/index.js";
 import { hyperledgerRouter, ipfsRouter, publicRouter, testRouter, transferRouter, certificateRouter } from "./routers/index.js";
-import checkAuthority from "./middlewares/checkAuthority.js";
+import {checkAuthority} from './middlewares/index.js'
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -29,17 +29,14 @@ const checkOrg2Access = (req, res, next) => {
   }
 };
 
-// Routes for Org1
 app.use("/ipfs", checkOrg1Access, checkAuthority, ipfsRouter);
 app.use("/hyperledger", checkOrg1Access, checkAuthority, hyperledgerRouter);
 app.use("/public", checkOrg1Access, checkAuthority, publicRouter);
 app.use("/transfer", checkOrg1Access, checkAuthority, transferRouter);
 app.use("/certificate", checkOrg1Access, checkAuthority, certificateRouter);
 
-// Specific route for Org2
 app.use("/test", checkOrg2Access, checkAuthority, testRouter);
 
-// Start the server
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
