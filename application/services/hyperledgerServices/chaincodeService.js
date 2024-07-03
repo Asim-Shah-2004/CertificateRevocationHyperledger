@@ -3,8 +3,8 @@ import {connectToHyperledger} from "../index.js"
 // Function to get a specific chaincode from Hyperledger network
 const getChaincode = async (name) => {
   try {
-    const network = await connectToHyperledger();
-    const chaincode = await network.getContract(name);
+    const {network1} = await connectToHyperledger();
+    const chaincode = await network1.getContract(name);
     return chaincode;
   } catch (error) {
     console.error(`Error : ${error}`);

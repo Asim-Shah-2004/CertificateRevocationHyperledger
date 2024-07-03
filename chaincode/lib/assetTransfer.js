@@ -4,6 +4,13 @@ const sortKeysRecursive = require("sort-keys-recursive");
 const { Contract } = require("fabric-contract-api");
 
 class AssetTransfer extends Contract {
+
+  checkAuthority(ctx, allowedMSPID) {
+    const mspID = ctx.clientIdentity.getMSPID();
+    return mspID;
+  }
+
+
   async addBlock(ctx, abcID, hash) {
     const block = { abcID, hash };
 
