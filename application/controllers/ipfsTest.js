@@ -5,7 +5,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from 'url';
 import FabricCAServices from 'fabric-ca-client'
-
+import {getIPFSEntryService} from '../services/index.js'   
 
 const getCCP = async (org) => {
     if (org == "Org1") {
@@ -157,7 +157,7 @@ const enrollAdmin = async (org, ccp) => {
 
 const test = async (req, res) => {
     let userOrg = "Org1"
-    let username = "nigga"
+    let username = "testuser"
     const ccp = await getCCP(userOrg)
     const caURL = await getCaUrl(userOrg, ccp)
     const walletPath = await getWalletPath(userOrg)
@@ -228,7 +228,34 @@ const test = async (req, res) => {
         message: username + ' enrolled Successfully',
         secret:secret
     };
-    return response
+    return res.send({response:response})
 };
 
-export { test };
+
+const test2 = async(req, res)=>{
+        let userOrg = "Org1"
+        let username = "testuser"
+        const walletPath = await getWalletPath(userOrg)
+        const wallet = await Wallets.newFileSystemWallet(walletPath);
+        console.log(wallet);
+        console.log(`Wallet path: ${walletPath}`);
+        const ccp = await getCCP(userOrg)
+        const userIdentity = await wallet.get(username);
+        if (userIdentity) {
+            console.log(`jinwin testuser  meh baate teri`);    
+            const connectOptions = {
+                wallet, identity: username, discovery: { enabled: true, asLocalhost: true },
+            }
+            const gateway = new Gateway();
+            await gateway.connect(ccp, connectOptions);
+            const network = await gateway.getNetwork('mychannel');
+            const contract = network.getContract('basic');
+            let result = await contract.submitTransaction('getBlock','123456')
+            console.log(await getIPFSEntryService('123456'));
+            res.send({result:result.toString()})
+        }else{
+            console.log('cha muda');
+        }
+}
+
+export { test,test2 };
