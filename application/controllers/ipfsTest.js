@@ -202,6 +202,7 @@ const test = async (req, res) => {
     let x509Identity;
     if (userOrg == "Org1") {
         x509Identity = {
+            secret : secret,
             credentials: {
                 certificate: enrollment.certificate,
                 privateKey: enrollment.key.toBytes(),
@@ -237,10 +238,18 @@ const test2 = async(req, res)=>{
         let username = "testuser"
         const walletPath = await getWalletPath(userOrg)
         const wallet = await Wallets.newFileSystemWallet(walletPath);
-        console.log(wallet);
-        console.log(`Wallet path: ${walletPath}`);
         const ccp = await getCCP(userOrg)
+        const caInfo = await getCaInfo(userOrg, ccp)
+    const caTLSCACerts = caInfo.tlsCACerts.pem;
+    const ca = new FabricCAServices(caInfo.url, { trustedRoots: caTLSCACerts, verify: false }, caInfo.caName);
+    console.log('ca');
+        console.log(ca);
+        // console.log('provider');
+        let adminIdentity = await wallet.get('admin');
+        const provider = wallet.getProviderRegistry().getProvider(adminIdentity.type);
+        // console.log(provider);
         const userIdentity = await wallet.get(username);
+        // console.log(userIdentity.credentials.privateKey);
         if (userIdentity) {
             console.log(`jinwin testuser  meh baate teri`);    
             const connectOptions = {
@@ -251,7 +260,6 @@ const test2 = async(req, res)=>{
             const network = await gateway.getNetwork('mychannel');
             const contract = network.getContract('basic');
             let result = await contract.submitTransaction('getBlock','123456')
-            console.log(await getIPFSEntryService('123456'));
             res.send({result:result.toString()})
         }else{
             console.log('cha muda');
